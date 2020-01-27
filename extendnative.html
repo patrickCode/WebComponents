@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Web Component Vanilla - Extends Native</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/document-register-element/1.13.0/document-register-element.js"></script> 
+    <script>
+        class ConfirmAnchor extends HTMLAnchorElement {
+            connectedCallback() {
+                this.addEventListener("click", e => {
+                    e.preventDefault();
+                    const result = confirm("Are you sure?");
+                    if (result) {
+                        window.location.href = e.target.href;
+                    }
+                })
+            }
+        }
+        window.customElements.define("a-confirm", ConfirmAnchor, { extends: "a" });
+    </script>
+</head>
+
+<body>
+    <h1 id="heading">Vanilla Web Components - Extends Native</h1>
+    <a is="a-confirm" href="https://www.bing.com">Go to Bing</a>
+</body>
+
+</html>

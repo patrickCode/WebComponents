@@ -1,0 +1,9 @@
+{
+    "name": "html_imports",
+    "scripts": {
+        "start": "npx mfserve --listen 3010 src"
+    },
+    "dependencies": {
+        "@microfrontends/serve": "^11.2.0"
+    }
+}

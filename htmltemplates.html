@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Templates</title>
+</head>
+
+<body>
+    <template id="list-item">
+        <li>
+            <h1>Book Title</h1>
+            <h3>Author</h3>
+        </li>
+    </template>
+
+    <ul id="book-list"></ul>
+
+</body>
+<script>
+    const books = [{
+        title: "Salvation of a Saint",
+        author: "Keigo Hagashimo"
+    }, {
+        title: "Phantom",
+        author: "Jo Nesbo"
+    }, {
+        title: "The Other Woman",
+        author: "Daniel Silva"
+    }];
+
+    const $template = document.getElementById("list-item");
+    const $list = document.getElementById("book-list");
+
+    books.forEach(book => {
+        const $clone = document.importNode($template.content, true);
+        $clone.querySelector("h1").innerText = book.title;
+        $clone.querySelector("h3").innerText = book.author;
+        $list.appendChild($clone);
+    });
+</script>
+
+</html>

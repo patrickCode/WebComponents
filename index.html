@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Web Component Vanilla</title>
+
+    <script>
+        class CustomElement extends HTMLElement {
+            constructor() {
+                super();
+                console.log("Custom Element created");
+            }
+
+            // Callback when then Element is connected to the DOM
+            connectedCallback() {
+                console.log("CustomElement has been connected to the DOM");
+            }
+
+            // Callback when a given attribute of the Component changes
+            // To get the array of attributes that we want to observe
+            static get observedAttributes() {
+                return ["name"];
+            }
+            attributeChangedCallback(name, oldValue, newValue) {
+                console.log("Attribute Changed! New Value + " + newValue + " Old value " + oldValue);
+            }
+
+            // Callback when the Custom Element is removed from the DOM
+            // Generally used for cleanups (like cancelling any JS intervals)
+            disconnectedCallback() {
+                console.log("Cusom Element has been removed");
+            }
+        }
+        // Telling the browser that for any "my-custom-element" tag construct that DOM element using the CustomElement class
+        window.customElements.define("my-custom-element", CustomElement);
+    </script>
+</head>
+
+<body>
+
+    <h1 id="heading">Vanilla Web Components</h1>
+    <!-- <my-custom-element></my-custom-element> -->
+
+    <script>
+        let $ce = document.createElement("my-custom-element");
+        setTimeout(() => {
+            document.body.appendChild($ce);
+        }, 3000);
+    </script>
+</body>
+
+</html>

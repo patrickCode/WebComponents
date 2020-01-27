@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>Web Component Vanilla - Extends</title>
+    <script>
+        class DivisionElement extends HTMLElement {
+            divide(num1, num2) {
+                console.log(parseInt(num1 / num2));
+            }
+        }
+
+        class MultiplyElement extends DivisionElement {
+            multiply(num1, num2) {
+                console.log(parseInt(num1 * num2));
+            }
+        }
+
+        window.customElements.define("do-divide", DivisionElement);
+        window.customElements.define("do-multipy", MultiplyElement);
+    </script>
+</head>
+
+<body>
+    <h1 id="heading">Vanilla Web Components - Extends</h1>
+    <do-divide></do-divide>
+    <do-multipy></do-multipy>
+</body>
+
+</html>

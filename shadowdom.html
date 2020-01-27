@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web Component Vanilla</title>
+    <style>
+        p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">Shadow DOM Tree</h1>
+    <p>Outer application paragraph (top)</p>
+    <div id="simple-div"></div>
+    <p>Out application paragraph (bottom)</p>
+
+    <script>
+        let innerDiv = document.getElementById("simple-div");
+        innerDiv.attachShadow({
+            mode: "open"
+        });
+        innerDiv.shadowRoot.innerHTML = `
+            <style>
+                p {
+                    color: blue;
+                }
+            </style>
+            <p>Paragraph within Shadow DOM</p>
+        `;
+    </script>
+
+</body>
+
+</html>
