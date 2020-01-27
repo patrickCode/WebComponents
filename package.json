@@ -1,7 +1,8 @@
 {
     "name": "html_imports",
     "scripts": {
-        "start-pure-js": "npx mfserve --listen 3010 purejs"
+        "start-pure-js": "npx mfserve --listen 3010 purejs",
+        "start-star": "npx mfserve --listen 3020 star-component"
     },
     "dependencies": {
         "@microfrontends/serve": "^11.2.0"
